@@ -106,6 +106,41 @@
 
     </section>
 
+<!-- =========================
+     STUDY TIMER
+========================= -->
+
+<section id="studyTimerSection" class="app-section">
+
+    <h2>⏱️ Study Timer</h2>
+    <p>Focus on your studies and take breaks on time.</p>
+
+    <div class="study-timer-box">
+
+        <h3 id="timerMode">📚 Study Session</h3>
+
+        <div id="timerDisplay">25:00</div>
+
+        <div class="timer-buttons">
+            <button onclick="startStudyTimer()">▶ Start</button>
+            <button onclick="pauseStudyTimer()">⏸ Pause</button>
+            <button onclick="resetStudyTimer()">↻ Reset</button>
+        </div>
+
+        <div class="timer-mode-buttons">
+            <button onclick="setStudyMode()">📚 Study - 25 min</button>
+            <button onclick="setBreakMode()">☕ Break - 5 min</button>
+        </div>
+
+        <div class="timer-stats">
+            <p>Completed Sessions: <strong id="completedSessions">0</strong></p>
+            <p>Total Focus Time: <strong id="totalFocusTime">0 minutes</strong></p>
+        </div>
+
+    </div>
+
+</section>
+
     
   <!-- PRODUCTIVITY DASHBOARD -->
   <section id="productivitySection" class="app-section">
@@ -297,7 +332,7 @@
      NOTES SECTION
 ========================= -->
 
-<section id="notesSection" class="section">
+<section id="notesSection" class="app-section">
 
     <h2>📝 Notes</h2>
 
@@ -411,7 +446,6 @@
 
 </section>
 
-<!-- =========================
 <!-- =========================
      NOTIFICATIONS SECTION
 ========================= -->

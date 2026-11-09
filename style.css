@@ -6179,3 +6179,73 @@ body.dark-theme .productivity-stat span {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   STUDY TIMER
+========================= */
+
+.study-timer-box {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+#timerDisplay {
+    font-size: 65px;
+    font-weight: bold;
+    margin: 25px 0;
+    color: #5b4bdb;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-buttons,
+.timer-mode-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.study-timer-box button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #5b4bdb;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.study-timer-box button:hover {
+    background: #4334b5;
+    transform: translateY(-2px);
+}
+
+.timer-stats {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.timer-stats p {
+    margin: 10px 0;
+}
+
+.dark-theme .study-timer-box {
+    background: rgba(35, 35, 55, 0.9);
+    color: white;
+}
+
+.dark-theme #timerDisplay {
+    color: #a99cff;
+}
+
+.dark-theme .timer-stats {
+    border-top-color: #555;
+}

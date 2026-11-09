@@ -2359,3 +2359,139 @@ if (aiUserInput) {
         
     });
 }
+
+
+// =========================
+// STUDY TIMER
+// =========================
+
+let studyTimerInterval = null;
+let timerSeconds = 25 * 60;
+let currentTimerMode = "study";
+
+// Load saved study statistics
+let completedStudySessions =
+    Number(localStorage.getItem("campusCompletedStudySessions")) || 0;
+
+let totalFocusMinutes =
+    Number(localStorage.getItem("campusTotalFocusMinutes")) || 0;
+
+
+// Update timer display
+function updateTimerDisplay() {
+    const minutes = Math.floor(timerSeconds / 60);
+    const seconds = timerSeconds % 60;
+
+    document.getElementById("timerDisplay").textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+}
+
+
+// Update study statistics
+function updateTimerStats() {
+    document.getElementById("completedSessions").textContent =
+        completedStudySessions;
+
+    document.getElementById("totalFocusTime").textContent =
+        totalFocusMinutes + " minutes";
+}
+
+
+// Start timer
+function startStudyTimer() {
+
+    if (studyTimerInterval !== null || timerSeconds <= 0) {
+        return;
+    }
+
+    studyTimerInterval = setInterval(function () {
+
+        timerSeconds--;
+        updateTimerDisplay();
+
+        // Timer completed
+        if (timerSeconds <= 0) {
+
+            clearInterval(studyTimerInterval);
+            studyTimerInterval = null;
+
+            if (currentTimerMode === "study") {
+
+                completedStudySessions++;
+                totalFocusMinutes += 25;
+
+                // Save statistics
+                localStorage.setItem(
+                    "campusCompletedStudySessions",
+                    completedStudySessions
+                );
+
+                localStorage.setItem(
+                    "campusTotalFocusMinutes",
+                    totalFocusMinutes
+                );
+
+                updateTimerStats();
+
+                alert("Great work! Study session completed. Time for a break!");
+
+            } else {
+
+                alert("Break completed! Ready for another study session?");
+            }
+        }
+
+    }, 1000);
+}
+
+
+// Pause timer
+function pauseStudyTimer() {
+    clearInterval(studyTimerInterval);
+    studyTimerInterval = null;
+}
+
+
+// Reset timer
+function resetStudyTimer() {
+    pauseStudyTimer();
+
+    timerSeconds = currentTimerMode === "study" ? 25 * 60 : 5 * 60;
+
+    updateTimerDisplay();
+}
+
+
+// Set study mode
+function setStudyMode() {
+    pauseStudyTimer();
+
+    currentTimerMode = "study";
+    timerSeconds = 25 * 60;
+
+    document.getElementById("timerMode").textContent =
+        "📚 Study Session";
+
+    updateTimerDisplay();
+}
+
+
+// Set break mode
+function setBreakMode() {
+    pauseStudyTimer();
+
+    currentTimerMode = "break";
+    timerSeconds = 5 * 60;
+
+    document.getElementById("timerMode").textContent =
+        "☕ Break Time";
+
+    updateTimerDisplay();
+}
+
+
+// Initialize timer when page loads
+updateTimerDisplay();
+updateTimerStats();
+
