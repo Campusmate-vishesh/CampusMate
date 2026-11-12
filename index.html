@@ -185,10 +185,14 @@
                 id="taskInput"
                 placeholder="Enter your task..."
             >
-            <input
+
+    <label for="taskDeadlineInput">📅 Task Deadline (Optional)</label>
+
+<input
     type="date"
     id="taskDeadlineInput"
 >
+
 
             <button onclick="addTask()">Add Task</button>
 
@@ -239,10 +243,12 @@
                 placeholder="Enter subject..."
             >
 
-            <input
-                type="date"
-                id="examDateInput"
-            >
+    <label for="examDateInput">📅 Exam Date (DD/MM/YYYY)</label>
+
+<input
+    type="date"
+    id="examDateInput"
+>
 
             <button onclick="addExam()">Add Exam</button>
 
@@ -301,9 +307,13 @@
             placeholder="Subject / Class"
         >
 
-        <input
-            type="time"
-            id="timeInput"
+        <label for="dateInput">📅 Class Date (DD/MM/YYYY)</label>
+
+<input
+    type="date"
+    id="dateInput"
+    onchange="updateDay()"
+>
         >
 
         <input
@@ -349,6 +359,17 @@
             placeholder="Write your note here..."
         ></textarea>
 
+        
+<select id="noteCategory">
+    <option value="Maths">📐 Maths</option>
+    <option value="Physics">⚡ Physics</option>
+    <option value="Chemistry">🧪 Chemistry</option>
+    <option value="C Programming">💻 C Programming</option>
+    <option value="Communication">🗣️ Communication</option>
+    <option value="Other" selected>📚 Other</option>
+</select>
+
+
         <button onclick="addNote()">
             Add Note
         </button>
@@ -364,6 +385,15 @@
     <textarea
         id="editNoteText"
         placeholder="Write your note"></textarea>
+
+        <select id="editNoteCategory">
+    <option value="Maths">📐 Maths</option>
+    <option value="Physics">⚡ Physics</option>
+    <option value="Chemistry">🧪 Chemistry</option>
+    <option value="C Programming">💻 C Programming</option>
+    <option value="Communication">🗣️ Communication</option>
+    <option value="Other">📚 Other</option>
+</select>
 
     <button onclick="saveEditedNote()">
         Save Changes

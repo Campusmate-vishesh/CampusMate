@@ -750,14 +750,7 @@ function addNote() {
         alert("Please enter note title and note.");
         return;
     }
-
-    const category = prompt(
-    "Enter category: Maths, Physics, C Programming, Communication or Other"
-);
-
-if (!category || category.trim() === "") {
-    return;
-}
+const category = document.getElementById("noteCategory").value;
 
 const note = {
     id: Date.now(),
@@ -902,6 +895,9 @@ function editNote(id) {
     document.getElementById("editNoteText").value =
         note.text;
 
+        document.getElementById("editNoteCategory").value =
+    note.category || "Other";
+
     document.getElementById("editNoteForm").style.display =
         "block";
 
@@ -939,6 +935,8 @@ function saveEditedNote() {
 
     note.title = newTitle;
     note.text = newText;
+
+    note.category = document.getElementById("editNoteCategory").value;
 
     localStorage.setItem(
         "campusNotes",
